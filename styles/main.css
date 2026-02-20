@@ -1,0 +1,127 @@
+html {
+  height: 100dvh;
+}
+
+body {
+  background: #fdfdf1;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.ripple-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: #253b76;
+  clip-path: circle(0% at 50% 40%);
+  transition: clip-path 2s cubic-bezier(.13,.15,.71,.92);
+}
+
+.ripple-overlay.expanding {
+  clip-path: circle(100vw at 50% 50%);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.landing-img {
+  height: 580px;
+  width: auto;
+}
+
+footer {
+  flex-shrink: 0;
+  position: relative;
+  padding: 0 2rem 2rem 2rem;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+
+  .footer-about {
+    max-width: 400px;
+
+    h4.footer-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: black;
+      transition: color 1.5s cubic-bezier(.13,.15,.71,.92);
+    }
+
+    p.footer-text {
+      font-size: 12px;
+      font-weight: 700;
+      color: black;
+      margin-top: 12px;
+      transition: color 1.5s cubic-bezier(.13,.15,.71,.92);
+    }
+
+    p.footer-subtext {
+      font-size: 12px;
+      font-weight: 300;
+      color: black;
+      text-align: justify;
+      margin-top: 12px;
+      line-height: 1.2;
+      transition: color 1.5s cubic-bezier(.13,.15,.71,.92);
+
+      span {
+        font-weight: 700;
+      }
+    }
+  }
+
+  .footer-contact {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+
+    .footer-contact-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: right;
+      font-size: 10px;
+      height: 80px;
+
+      p {
+        transition: color 1.5s cubic-bezier(.13,.15,.71,.92);
+      }
+
+      a {
+        text-decoration: none;
+        color: black;
+        cursor: pointer;
+        transition: color 1.5s cubic-bezier(.13,.15,.71,.92);
+      }
+
+    }
+    img {
+      height: 80px;
+      width: auto;
+    }
+  }
+}
+
+body.dark footer {
+  h4.footer-title,
+  p.footer-text,
+  p.footer-subtext,
+  p {
+    color: white;
+  }
+
+  .footer-contact .footer-contact-info a {
+    color: white;
+  }
+}

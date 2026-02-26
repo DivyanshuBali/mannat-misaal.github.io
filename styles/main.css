@@ -35,8 +35,35 @@ main {
 }
 
 .landing-img {
+  position: relative;
+  height: 580px;
+  width: 390px;
+}
+
+.landing-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 580px;
   width: auto;
+}
+
+.landing-img__black {
+  opacity: 1;
+  transition: opacity 1.5s cubic-bezier(.13,.15,.71,.92);
+}
+
+.landing-img__white {
+  opacity: 0;
+  transition: opacity 1.5s cubic-bezier(.13,.15,.71,.92);
+}
+
+body.dark .landing-img__white {
+  opacity: 1;
+}
+
+body.dark .landing-img__black {
+  opacity: 0;
 }
 
 footer {
@@ -77,6 +104,13 @@ footer {
 
       span {
         font-weight: 700;
+
+        a {
+          text-decoration: underline;
+          color: black;
+          cursor: pointer;
+          transition: color 1.5s cubic-bezier(.13,.15,.71,.92);
+        }
       }
     }
   }
@@ -105,6 +139,10 @@ footer {
         transition: color 1.5s cubic-bezier(.13,.15,.71,.92);
       }
 
+      .footer-email {
+        text-decoration: underline;
+      }
+
     }
     img {
       height: 80px;
@@ -119,6 +157,10 @@ body.dark footer {
   p.footer-subtext,
   p {
     color: white;
+
+    a {
+      color: white;
+    }
   }
 
   .footer-contact .footer-contact-info a {

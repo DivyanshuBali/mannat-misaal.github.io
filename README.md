@@ -6,19 +6,16 @@ A meandering speculation on Indian imagination.
 
 - **Next.js 16** with App Router
 - **TypeScript**
-- **Bun** as runtime and package manager
 
 ## Development
 
 ```bash
-bun install
-bun run dev
+yarn install
+yarn dev
 ```
 
 ## Build
 
 ```bash
-bun run build
+yarn build
 ```
-
-Static export outputs to `out/` directory for deployment on GitHub Pages or any static host.

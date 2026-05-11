@@ -1,0 +1,276 @@
+/* Font faces */
+@font-face {
+  font-family: "Helvetica";
+  src: url("/fonts/Helvetica.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica";
+  src: url("/fonts/Helvetica-Oblique.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica";
+  src: url("/fonts/Helvetica-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica";
+  src: url("/fonts/Helvetica-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica";
+  src: url("/fonts/Helvetica-BoldOblique.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  height: 100dvh;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+body {
+  font-family: "Helvetica", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fdfdf1;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ripple overlay */
+.ripple-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: #253b76;
+  clip-path: circle(0% at 50% 50%);
+  transition: clip-path 2s cubic-bezier(0.13, 0.15, 0.71, 0.92);
+}
+
+.ripple-overlay.expanding {
+  /* 150vmax ensures the circle covers all four corners on any aspect ratio */
+  clip-path: circle(150vmax at 50% 50%);
+}
+
+/* Main */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.landing-img {
+  position: relative;
+  height: 580px;
+  width: 390px;
+}
+
+.landing-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 580px;
+  width: auto;
+}
+
+.landing-img__black {
+  opacity: 1;
+  transition: opacity 1.5s cubic-bezier(0.13, 0.15, 0.71, 0.92);
+}
+
+.landing-img__white {
+  opacity: 0;
+  transition: opacity 1.5s cubic-bezier(0.13, 0.15, 0.71, 0.92);
+}
+
+body.dark .landing-img__white {
+  opacity: 1;
+}
+
+body.dark .landing-img__black {
+  opacity: 0;
+}
+
+/* Footer */
+footer {
+  flex-shrink: 0;
+  position: relative;
+  padding: 0 2rem 2rem 2rem;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-about {
+  max-width: 400px;
+}
+
+.footer-about .footer-title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #a23622;
+  transition: color 1.5s cubic-bezier(0.13, 0.15, 0.71, 0.92);
+}
+
+.footer-about .footer-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: #a23622;
+  margin-top: 12px;
+  transition: color 1.5s cubic-bezier(0.13, 0.15, 0.71, 0.92);
+}
+
+.footer-about .footer-subtext {
+  font-size: 12px;
+  font-weight: 300;
+  color: #a23622;
+  text-align: justify;
+  margin-top: 12px;
+  line-height: 1.2;
+  transition: color 1.5s cubic-bezier(0.13, 0.15, 0.71, 0.92);
+}
+
+.footer-about .footer-subtext span {
+  font-weight: 700;
+}
+
+.footer-about .footer-subtext span a {
+  text-decoration: underline;
+  color: #a23622;
+  cursor: pointer;
+  transition: color 1.5s cubic-bezier(0.13, 0.15, 0.71, 0.92);
+}
+
+.footer-contact {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.footer-contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: right;
+  font-size: 10px;
+  height: 80px;
+}
+
+.footer-contact-info p {
+  color: #a23622;
+  transition: color 1.5s cubic-bezier(0.13, 0.15, 0.71, 0.92);
+}
+
+.footer-contact-info a {
+  text-decoration: none;
+  color: #a23622;
+  cursor: pointer;
+  transition: color 1.5s cubic-bezier(0.13, 0.15, 0.71, 0.92);
+}
+
+.footer-contact-info .footer-email {
+  text-decoration: underline;
+}
+
+.footer-contact img {
+  height: 80px;
+  width: auto;
+  transition: filter 1.5s cubic-bezier(0.13, 0.15, 0.71, 0.92);
+}
+
+/* Dark mode states */
+body.dark .footer-contact img {
+  filter: brightness(0) invert(1);
+}
+
+body.dark .footer-about .footer-title,
+body.dark .footer-about .footer-text,
+body.dark .footer-about .footer-subtext {
+  color: white;
+}
+
+body.dark .footer-about .footer-subtext span a {
+  color: white;
+}
+
+body.dark .footer-contact-info p {
+  color: white;
+}
+
+body.dark .footer-contact-info a {
+  color: white;
+}

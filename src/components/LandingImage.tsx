@@ -1,8 +1,13 @@
 "use client";
 
 import { useRef, useState, useCallback } from "react";
+import styles from "./LandingImage.module.css";
 
-export default function LandingImage() {
+interface LandingImageProps {
+  rippleOverlayClass: string;
+}
+
+export default function LandingImage({ rippleOverlayClass }: LandingImageProps) {
   const [activated, setActivated] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
 
@@ -17,7 +22,7 @@ export default function LandingImage() {
     document.body.classList.add("dark");
 
     const onTransitionEnd = () => {
-      document.body.style.background = "#253b76";
+      document.body.style.background = "var(--color-navy)";
       overlay.style.transition = "none";
       overlay.classList.remove("expanding");
       overlay.style.clipPath = "circle(150vmax at 50% 50%)";
@@ -28,22 +33,20 @@ export default function LandingImage() {
 
   return (
     <>
-      <div ref={overlayRef} className="ripple-overlay" />
+      <div ref={overlayRef} className={rippleOverlayClass} />
 
-      <main>
-        <div className="landing-img" onMouseEnter={handleMouseEnter}>
-          <img
-            className="landing-img__black"
-            src="/assets/landing-img-red.png"
-            alt="Ranjit Singh gate axonometric view"
-          />
-          <img
-            className="landing-img__white"
-            src="/assets/landing-img-white.png"
-            alt="Ranjit Singh gate axonometric view"
-          />
-        </div>
-      </main>
+      <div className={styles.landingImg} onMouseEnter={handleMouseEnter}>
+        <img
+          className={styles.black}
+          src="/assets/landing-img-red.png"
+          alt="Ranjit Singh gate axonometric view"
+        />
+        <img
+          className={styles.white}
+          src="/assets/landing-img-white.png"
+          alt="Ranjit Singh gate axonometric view"
+        />
+      </div>
     </>
   );
 }

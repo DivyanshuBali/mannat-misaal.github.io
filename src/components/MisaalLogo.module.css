@@ -1,0 +1,10 @@
+.logo {
+  height: 80px;
+  width: auto;
+  color: var(--color-red);
+  transition: color 1.5s cubic-bezier(0.13, 0.15, 0.71, 0.92);
+}
+
+:global(body.dark) .logo {
+  color: var(--color-white);
+}

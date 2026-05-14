@@ -1,0 +1,28 @@
+import styles from "./MisaalLogo.module.css";
+
+export default function MisaalLogo() {
+  return (
+    <svg
+      className={styles.logo}
+      width="51"
+      height="80"
+      viewBox="0 0 51 80"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="misaal logo"
+    >
+      <g clipPath="url(#misaal-logo-clip)">
+        <path d="M50.7961 0.200195H0.204102V79.8002H50.7961V0.200195Z" stroke="currentColor" />
+        <path
+          d="M21.624 30.4004L27.7441 30.3994H39.168V77.5996H45.2881V24H27.7441V2.40039H48.5684V77.6084H2.44824V2.40039H21.624V30.4004ZM14.0381 29.9805C9.34389 29.9807 5.53809 33.8632 5.53809 38.3682C5.53829 42.8728 9.34401 46.7546 14.0381 46.7549C18.7324 46.7549 22.5379 42.8729 22.5381 38.3682C22.5381 33.863 18.7325 29.9805 14.0381 29.9805Z"
+          fill="currentColor"
+        />
+      </g>
+      <defs>
+        <clipPath id="misaal-logo-clip">
+          <rect width="51" height="80" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+}

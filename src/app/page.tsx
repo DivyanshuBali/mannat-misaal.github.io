@@ -9,21 +9,8 @@ export default function Home() {
         <main className={styles.main}>
           <LandingImage rippleOverlayClass={styles.rippleOverlay} />
         </main>
-        <nav className={styles.miniNav}>
-          <a className={styles.navLink} href="#footer-detail">
-            misaal
-          </a>
-          <div className={styles.navLinksGroup}>
-            <a className={styles.navLink} href="/studies">
-              studies
-            </a>
-            <a className={styles.navLink} href="/people">
-              people
-            </a>
-          </div>
-        </nav>
       </div>
-      <Footer />
+      <Footer variant="home" />
     </>
   );
 }

@@ -59,5 +59,8 @@
 
   /* Background */
   --color-bg: #fdfdf1;
+
+  /* heights */
+  --height-footer-nav: 50px;
 }
 

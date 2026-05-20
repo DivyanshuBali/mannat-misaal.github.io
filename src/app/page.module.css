@@ -1,5 +1,5 @@
 .firstScreen {
-  height: 100dvh;
+  height: calc(100dvh - var(--height-footer-nav));
   display: flex;
   flex-direction: column;
 }
@@ -28,33 +28,4 @@
 /* 150vmax ensures the circle covers all four corners on any aspect ratio */
 .rippleOverlay:global(.expanding) {
   clip-path: circle(150vmax at 50% 50%);
-}
-
-.miniNav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem 2rem;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 1;
-}
-
-.navLink {
-  font-size: 24px;
-  font-weight: 500;
-  color: var(--color-red);
-  text-decoration: none;
-  cursor: pointer;
-  transition: color 1.5s cubic-bezier(0.13, 0.15, 0.71, 0.92);
-  line-height: 1;
-}
-
-.navLinksGroup {
-  display: flex;
-  gap: 20px;
-}
-
-:global(body.dark) .navLink {
-  color: var(--color-white);
 }

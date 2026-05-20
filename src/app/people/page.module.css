@@ -1,0 +1,14 @@
+.peopleRoot {
+  height: 100dvh;
+}
+
+.main {
+  height: calc(100dvh - var(--height-footer-nav));
+}
+
+.people {
+  border: 1px solid var(--color-red);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}

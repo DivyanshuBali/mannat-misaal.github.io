@@ -20,7 +20,7 @@ export default function Footer({ variant = "page" }: FooterProps) {
           </Link>
         )}
         <div className={styles.navLinksGroup}>
-          <Link href="/studies" className={styles.navLink}>
+          <Link href="/" className={styles.navLink}>
             studies
           </Link>
           <Link href="/people" className={styles.navLink}>

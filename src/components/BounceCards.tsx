@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./BounceCards.module.css";
 
 interface BounceCardsProps {
@@ -124,9 +125,9 @@ export default function BounceCards({
       }}
     >
       {images.map((src, idx) => (
-        // <a href={`/study/${slugs[idx]}`} key={idx}>
-        <div
+        <Link
           key={idx}
+          href={`/study/${slugs[idx]}`}
           className={`${styles.card} card card-${idx}`}
           style={{
             transform: transformStyles[idx] ?? "none",
@@ -142,8 +143,7 @@ export default function BounceCards({
             width={150}
             height={125}
           />
-        </div>
-        // </a>
+        </Link>
       ))}
     </div>
   );

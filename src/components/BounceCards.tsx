@@ -1,9 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import {
+  STUDIES_HIGHLIGHT_EVENT,
+  STUDIES_HIGHLIGHT_PARAM,
+} from "./StudiesNavLink";
 import styles from "./BounceCards.module.css";
 
 interface BounceCardsProps {
@@ -38,6 +43,52 @@ export default function BounceCards({
   slugs,
 }: BounceCardsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const highlightTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
+  const [highlighted, setHighlighted] = useState(false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const triggerHighlight = useCallback(() => {
+    if (highlightTimeoutRef.current) {
+      clearTimeout(highlightTimeoutRef.current);
+    }
+
+    setHighlighted(true);
+    highlightTimeoutRef.current = setTimeout(() => {
+      setHighlighted(false);
+      highlightTimeoutRef.current = null;
+    }, 1000);
+  }, []);
+
+  useEffect(() => {
+    const handleHighlightEvent = () => {
+      triggerHighlight();
+    };
+
+    window.addEventListener(STUDIES_HIGHLIGHT_EVENT, handleHighlightEvent);
+    return () => {
+      window.removeEventListener(STUDIES_HIGHLIGHT_EVENT, handleHighlightEvent);
+    };
+  }, [triggerHighlight]);
+
+  useEffect(() => {
+    return () => {
+      if (highlightTimeoutRef.current) {
+        clearTimeout(highlightTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (searchParams.get("highlight") !== STUDIES_HIGHLIGHT_PARAM) {
+      return;
+    }
+
+    triggerHighlight();
+    router.replace("/", { scroll: false });
+  }, [searchParams, router, triggerHighlight]);
 
   const getPushedTransform = (
     baseTransform: string,
@@ -128,7 +179,7 @@ export default function BounceCards({
         <Link
           key={idx}
           href={`/study/${slugs[idx]}`}
-          className={`${styles.card} card card-${idx}`}
+          className={`${styles.card} ${highlighted ? styles.cardHighlighted : ""} card card-${idx}`}
           style={{
             transform: transformStyles[idx] ?? "none",
             zIndex: images.length - idx,

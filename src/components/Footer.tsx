@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MisaalLogo from "./MisaalLogo";
+import StudiesNavLink from "./StudiesNavLink";
 import styles from "./Footer.module.css";
 
 type FooterProps = {
@@ -20,9 +21,7 @@ export default function Footer({ variant = "page" }: FooterProps) {
           </Link>
         )}
         <div className={styles.navLinksGroup}>
-          <Link href="/" className={styles.navLink}>
-            studies
-          </Link>
+          <StudiesNavLink className={styles.navLink}>studies</StudiesNavLink>
           <Link href="/people" className={styles.navLink}>
             people
           </Link>

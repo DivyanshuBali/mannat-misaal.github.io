@@ -1,4 +1,4 @@
-import LandingImage from "@/components/LandingImage";
+import { Suspense } from "react";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
 import BounceCards from "@/components/BounceCards";
@@ -23,15 +23,16 @@ export default function Home() {
     <>
       <div className={styles.firstScreen}>
         <main className={styles.main}>
-          <BounceCards
-            images={images}
-            containerWidth={500}
-            containerHeight={500}
-            transformStyles={transformStyles}
-            enableHover={true}
-            slugs={slugs}
-          />
-          {/* <LandingImage rippleOverlayClass={styles.rippleOverlay} /> */}
+          <Suspense fallback={null}>
+            <BounceCards
+              images={images}
+              containerWidth={500}
+              containerHeight={500}
+              transformStyles={transformStyles}
+              enableHover={true}
+              slugs={slugs}
+            />
+          </Suspense>
         </main>
       </div>
       <Footer variant="home" />

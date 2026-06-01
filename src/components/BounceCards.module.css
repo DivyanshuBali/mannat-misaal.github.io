@@ -10,18 +10,19 @@
 .card {
   position: absolute;
   display: block;
-  width: 200px;
+  width: 150px;
   aspect-ratio: 3/4;
-  border: 2px solid var(--color-red);
+  border: 1px solid var(--color-red);
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
   cursor: pointer;
   text-decoration: none;
   color: inherit;
 }
 
 .cardHighlighted {
-  border-width: 4px;
+  box-shadow: 0 4px 40px rgba(162, 54, 34, 0.4);
 }
 
 .card .image {

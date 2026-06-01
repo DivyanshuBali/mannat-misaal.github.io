@@ -13,9 +13,9 @@ STUDIES_DATA.studies.forEach((study) => {
 });
 
 const transformStyles = [
-  "translate(-60px) skewX(34deg) rotate(34deg)",
+  "translate(-40px) skewX(34deg) rotate(34deg)",
   "translate(0) skewX(34deg) rotate(34deg)",
-  "translate(60px) skewX(34deg) rotate(34deg)",
+  "translate(40px) skewX(34deg) rotate(34deg)",
 ];
 
 export default function Home() {

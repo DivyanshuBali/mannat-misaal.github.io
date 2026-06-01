@@ -1,0 +1,21 @@
+.infoBox {
+  width: 150px;
+  min-height: 70px;
+  border: 1px solid var(--color-red);
+  padding: 14px 10px;
+  box-sizing: border-box;
+  color: var(--color-red);
+  font-size: 12px;
+  line-height: normal;
+}
+
+.infoName {
+  font-weight: 700;
+  margin: 0;
+}
+
+.infoDesignation,
+.infoStudies {
+  font-weight: 400;
+  margin: 0;
+}

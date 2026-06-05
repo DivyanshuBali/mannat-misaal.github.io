@@ -138,7 +138,7 @@ export default function BounceCards({
           overwrite: "auto",
         });
       } else if (isLast && i < hoveredIdx) {
-        const pushedTransform = getPushedTransform(baseTransform, -80);
+        const pushedTransform = getPushedTransform(baseTransform, 0);
         gsap.to(selector, {
           transform: pushedTransform,
           duration: 0.3,

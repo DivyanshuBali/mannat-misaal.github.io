@@ -64,3 +64,16 @@
   --height-footer-nav: 50px;
 }
 
+body {
+  font-family: "Helvetica", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--color-bg);
+  min-height: 100dvh;
+  height: 100dvh;
+}
+
+.max-width-container {
+  max-width: 1920px;
+  height: 100%;
+}

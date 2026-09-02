@@ -1,0 +1,118 @@
+.navbar {
+  display: flex;
+  color: var(--color-red);
+  font-size: 20px;
+  font-weight: 600;
+  flex: 1;
+  width: 100%;
+  padding-right: 12rem;
+
+  .logoGroup {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .logo {
+      text-decoration: none;
+      color: var(--color-red);
+      width: fit-content;
+    }
+
+    .divider {
+      width: 0;
+      height: 1px;
+      background-color: var(--color-navy);
+      transition: width 0.8s ease;
+    }
+
+    .mannatLink {
+      color: var(--color-navy);
+      text-decoration: none;
+      width: fit-content;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+    }
+
+    &:hover .divider,
+    &:focus-within .divider {
+      width: 50%;
+    }
+
+    &:hover .mannatLink,
+    &:focus-within .mannatLink {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--color-red);
+    position: relative;
+  }
+
+  ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+
+      .personRole {
+        font-weight: 400;
+        font-size: 13px;
+      }
+    }
+  }
+
+  .peopleLink {
+    .peopleContent {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      padding-top: 5rem;
+      color: var(--color-red);
+      width: 320px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+    }
+
+    &:hover .peopleContent,
+    &:focus-within .peopleContent {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+
+  .navLinks {
+    gap: 2rem;
+    display: flex;
+  }
+}
+
+.bubble {
+  position: fixed;
+  z-index: 2147483647;
+  border-radius: 50%;
+  background-color: var(--color-navy);
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 1.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.bubbleExpanded {
+  transform: translate(-50%, -50%) scale(1);
+}

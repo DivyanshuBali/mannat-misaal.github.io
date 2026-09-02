@@ -1,94 +1,43 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import {
-  STUDIES_HIGHLIGHT_EVENT,
-  STUDIES_HIGHLIGHT_PARAM,
-} from "./StudiesNavLink";
 import styles from "./BounceCards.module.css";
+import STUDIES_DATA from "@/data/studies.json";
+
+const images: string[] = [];
+const slugs: string[] = [];
+
+STUDIES_DATA.studies.forEach((study) => {
+  images.push(study.imageUrl);
+  slugs.push(study.slug);
+});
+
+const transformStyles = [
+  "translate(-40px) skewX(34deg) rotate(34deg)",
+  "translate(0) skewX(34deg) rotate(34deg)",
+  "translate(40px) skewX(34deg) rotate(34deg)",
+];
 
 interface BounceCardsProps {
   className?: string;
-  images?: string[];
   containerWidth?: number;
   containerHeight?: number;
   animationDelay?: number;
   animationStagger?: number;
   easeType?: string;
-  transformStyles?: string[];
   enableHover?: boolean;
-  /**
-   * The slug of the study to link to
-   */
-  slugs: string[];
 }
 
 export default function BounceCards({
   className = "",
-  images = [],
   containerWidth = 400,
   containerHeight = 400,
-  transformStyles = [
-    "rotate(10deg) translate(-170px)",
-    "rotate(5deg) translate(-85px)",
-    "rotate(-3deg)",
-    "rotate(-10deg) translate(85px)",
-    "rotate(2deg) translate(170px)",
-  ],
   enableHover = false,
-  slugs,
 }: BounceCardsProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const highlightTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
-    null,
-  );
-  const [highlighted, setHighlighted] = useState(false);
-  const searchParams = useSearchParams();
-  const router = useRouter();
-
-  const triggerHighlight = useCallback(() => {
-    if (highlightTimeoutRef.current) {
-      clearTimeout(highlightTimeoutRef.current);
-    }
-
-    setHighlighted(true);
-    highlightTimeoutRef.current = setTimeout(() => {
-      setHighlighted(false);
-      highlightTimeoutRef.current = null;
-    }, 1000);
-  }, []);
-
-  useEffect(() => {
-    const handleHighlightEvent = () => {
-      triggerHighlight();
-    };
-
-    window.addEventListener(STUDIES_HIGHLIGHT_EVENT, handleHighlightEvent);
-    return () => {
-      window.removeEventListener(STUDIES_HIGHLIGHT_EVENT, handleHighlightEvent);
-    };
-  }, [triggerHighlight]);
-
-  useEffect(() => {
-    return () => {
-      if (highlightTimeoutRef.current) {
-        clearTimeout(highlightTimeoutRef.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (searchParams.get("highlight") !== STUDIES_HIGHLIGHT_PARAM) {
-      return;
-    }
-
-    triggerHighlight();
-    router.replace("/", { scroll: false });
-  }, [searchParams, router, triggerHighlight]);
 
   const getPushedTransform = (
     baseTransform: string,
@@ -179,7 +128,7 @@ export default function BounceCards({
         <Link
           key={idx}
           href={`/study/${slugs[idx]}`}
-          className={`${styles.card} ${highlighted ? styles.cardHighlighted : ""} card card-${idx}`}
+          className={`${styles.card} card card-${idx}`}
           style={{
             transform: transformStyles[idx] ?? "none",
             zIndex: images.length - idx,

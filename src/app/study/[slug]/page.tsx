@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Footer from "@/components/Footer";
 import studiesData from "@/data/studies.json";
 import styles from "./page.module.css";
 
@@ -58,7 +57,6 @@ export default async function StudyPage({ params }: Props) {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

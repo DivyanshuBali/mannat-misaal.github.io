@@ -52,13 +52,3 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
-
-body {
-  font-family: "Helvetica", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: var(--color-bg);
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-}

@@ -1,31 +1,37 @@
-.firstScreen {
-  height: calc(100dvh - var(--height-footer-nav));
-  display: flex;
-  flex-direction: column;
-}
-
 .main {
-  flex: 1;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  position: relative;
-  z-index: 1;
+  gap: 70px;
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+  }
+
+  .hero {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.8s ease,
+      visibility 0.8s ease;
+  }
+
+  .heroVisible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .navContainer {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+  }
 }
 
-.rippleOverlay {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: var(--color-navy);
-  clip-path: circle(0% at 50% 50%);
-  transition: clip-path 2s cubic-bezier(0.13, 0.15, 0.71, 0.92);
-}
-
-/* 150vmax ensures the circle covers all four corners on any aspect ratio */
-.rippleOverlay:global(.expanding) {
-  clip-path: circle(150vmax at 50% 50%);
-}

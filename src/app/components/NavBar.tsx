@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
+import { createPortal, flushSync } from "react-dom";
 import styles from "./NavBar.module.css";
 
 const MANNAT_URL = "https://mannatsingh.co";
@@ -21,6 +21,14 @@ function NavBar({ onLogoHoverChange }: NavBarProps) {
 
   useEffect(() => {
     setMounted(true);
+
+    const handlePageShow = () => {
+      setBubble(null);
+      setBubbleExpanded(false);
+    };
+
+    window.addEventListener("pageshow", handlePageShow);
+    return () => window.removeEventListener("pageshow", handlePageShow);
   }, []);
 
   const handleMannatClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -53,6 +61,12 @@ function NavBar({ onLogoHoverChange }: NavBarProps) {
     event: React.TransitionEvent<HTMLDivElement>,
   ) => {
     if (event.propertyName !== "transform") return;
+
+    flushSync(() => {
+      setBubble(null);
+      setBubbleExpanded(false);
+    });
+
     window.location.assign(MANNAT_URL);
   };
 

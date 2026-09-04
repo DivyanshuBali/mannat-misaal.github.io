@@ -1,0 +1,69 @@
+.page {
+  height: 100dvh;
+  display: flex;
+  gap: 70px;
+  overflow: hidden;
+}
+
+.canvas,
+.navContainer {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.canvas {
+  position: relative;
+  overflow: hidden;
+}
+
+.stamp {
+  position: absolute;
+  z-index: 1;
+  width: 74px;
+  height: 92px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-red);
+  color: var(--color-red);
+  background-color: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.stamp::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px dashed currentColor;
+  pointer-events: none;
+}
+
+.dragging {
+  z-index: 2;
+  cursor: grabbing;
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1200px) {
+  .page {
+    display: block;
+  }
+
+  .canvas {
+    width: 100%;
+    height: 100dvh;
+  }
+
+  .navContainer {
+    display: contents;
+  }
+}

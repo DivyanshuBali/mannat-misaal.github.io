@@ -66,6 +66,12 @@ function NavBar({ onLogoHoverChange }: NavBarProps) {
     onLogoHoverChange?.(active);
   };
 
+  const handleStudiesClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!window.matchMedia("(max-width: 1200px)").matches) {
+      event.preventDefault();
+    }
+  };
+
   const handlePeopleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (!window.matchMedia("(max-width: 1200px)").matches) {
       event.preventDefault();
@@ -103,7 +109,8 @@ function NavBar({ onLogoHoverChange }: NavBarProps) {
 
       <div className={styles.navLinks}>
         <a
-          href="/"
+          href="/studies"
+          onClick={handleStudiesClick}
           onMouseEnter={() => handleStudiesInteraction(true)}
           onMouseLeave={() => handleStudiesInteraction(false)}
           onFocus={() => handleStudiesInteraction(true)}

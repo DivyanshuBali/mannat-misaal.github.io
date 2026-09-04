@@ -61,7 +61,8 @@
   --color-bg: #faf9f6;
 
   /* heights */
-  --height-footer-nav: 50px;
+  --height-header-nav: 85px;
+  --height-footer-nav: 132px;
 }
 
 body {

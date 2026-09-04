@@ -5,6 +5,12 @@
 
   @media (max-width: 1200px) {
     flex-direction: column;
+    min-height: 100dvh;
+    height: auto;
+    padding:
+      calc(var(--height-header-nav) + env(safe-area-inset-top))
+      0
+      calc(var(--height-footer-nav) + env(safe-area-inset-bottom));
   }
 
   .hero {
@@ -32,6 +38,10 @@
     min-width: 0;
     display: flex;
     align-items: center;
+
+    @media (max-width: 1200px) {
+      display: contents;
+    }
   }
 }
 

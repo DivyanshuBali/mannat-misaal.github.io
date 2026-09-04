@@ -57,6 +57,15 @@ function NavBar({ onLogoHoverChange }: NavBarProps) {
     });
   };
 
+  const handleStudiesInteraction = (active: boolean) => {
+    if (window.matchMedia("(max-width: 1200px)").matches) {
+      onLogoHoverChange?.(false);
+      return;
+    }
+
+    onLogoHoverChange?.(active);
+  };
+
   const handleBubbleTransitionEnd = (
     event: React.TransitionEvent<HTMLDivElement>,
   ) => {
@@ -89,10 +98,10 @@ function NavBar({ onLogoHoverChange }: NavBarProps) {
       <div className={styles.navLinks}>
         <a
           href="/"
-          onMouseEnter={() => onLogoHoverChange?.(true)}
-          onMouseLeave={() => onLogoHoverChange?.(false)}
-          onFocus={() => onLogoHoverChange?.(true)}
-          onBlur={() => onLogoHoverChange?.(false)}
+          onMouseEnter={() => handleStudiesInteraction(true)}
+          onMouseLeave={() => handleStudiesInteraction(false)}
+          onFocus={() => handleStudiesInteraction(true)}
+          onBlur={() => handleStudiesInteraction(false)}
         >
           studies
         </a>
@@ -119,9 +128,7 @@ function NavBar({ onLogoHoverChange }: NavBarProps) {
             </ol>
           </div>
         </a>
-        <a href="/" className={styles.navLinks}>
-          about
-        </a>
+        <a href="/">about</a>
       </div>
 
       {mounted &&

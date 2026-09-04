@@ -119,3 +119,72 @@
 .bubbleExpanded {
   transform: translate(-50%, -50%) scale(1);
 }
+
+@media (max-width: 1200px) {
+  .navbar {
+    display: contents;
+
+    .logoGroup {
+      position: fixed;
+      z-index: 100;
+      top: calc(17px + env(safe-area-inset-top));
+      left: calc(17px + env(safe-area-inset-left));
+      width: 160px;
+      height: auto;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 5px;
+      font-size: 20px;
+      line-height: 20px;
+
+      .divider {
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: var(--color-red);
+        transition: none;
+      }
+
+      .mannatLink {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition: none;
+      }
+
+      &:hover .divider,
+      &:focus-within .divider {
+        width: 100%;
+      }
+    }
+
+    > .navLinks {
+      position: fixed;
+      z-index: 100;
+      right: calc(17px + env(safe-area-inset-right));
+      bottom: calc(17px + env(safe-area-inset-bottom));
+      left: auto;
+      width: 84px;
+      height: auto;
+      padding: 0;
+      flex-direction: column;
+      gap: 13px;
+      align-items: flex-end;
+      justify-content: flex-start;
+      font-size: 20px;
+      line-height: normal;
+      text-align: right;
+
+      > a {
+        width: 100%;
+      }
+
+      .peopleContent {
+        display: none;
+      }
+    }
+  }
+}

@@ -66,6 +66,12 @@ function NavBar({ onLogoHoverChange }: NavBarProps) {
     onLogoHoverChange?.(active);
   };
 
+  const handlePeopleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!window.matchMedia("(max-width: 1200px)").matches) {
+      event.preventDefault();
+    }
+  };
+
   const handleBubbleTransitionEnd = (
     event: React.TransitionEvent<HTMLDivElement>,
   ) => {
@@ -105,7 +111,11 @@ function NavBar({ onLogoHoverChange }: NavBarProps) {
         >
           studies
         </a>
-        <a href="/" className={styles.peopleLink}>
+        <a
+          href="/people"
+          className={styles.peopleLink}
+          onClick={handlePeopleClick}
+        >
           people
           <div className={styles.peopleContent}>
             <ol>

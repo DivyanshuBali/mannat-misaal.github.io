@@ -77,4 +77,5 @@ body {
 .max-width-container {
   max-width: 1920px;
   height: 100%;
+  margin: auto;
 }

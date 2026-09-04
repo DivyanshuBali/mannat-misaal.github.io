@@ -66,9 +66,13 @@
       justify-content: space-between;
       align-items: baseline;
 
+      .personName {
+        font-size: 13px;
+      }
+
       .personRole {
         font-weight: 400;
-        font-size: 13px;
+        font-size: 9px;
       }
     }
   }
@@ -78,9 +82,8 @@
       position: absolute;
       top: 100%;
       left: 0;
-      padding-top: 5rem;
       color: var(--color-red);
-      width: 320px;
+      width: 200px;
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -105,7 +108,7 @@
 
 .bubble {
   position: fixed;
-  z-index: 2147483647;
+  z-index: 999999;
   border-radius: 50%;
   background-color: var(--color-navy);
   pointer-events: none;
